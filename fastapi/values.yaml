@@ -1,0 +1,16 @@
+namespace: kuma-demo
+
+image:
+  repository: "asia-northeast3-docker.pkg.dev/jieum-dev/jongsoo/fastapi"
+  tag: "1.2"
+  pullPolicy: IfNotPresent
+
+service:
+  name: fastapi-service-2
+  type: ClusterIP
+  port: 80
+
+deployment:
+  name: fastapi-deployment-2
+  replicas: 1
+  port: 80

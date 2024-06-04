@@ -13,17 +13,3 @@ spec:
       port: {{ .Values.service.port }}
       targetPort: 80
   type: {{ .Values.service.type }}
-
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: {{ .Values.service.name }}-lb
-  namespace: {{ .Values.namespace }}
-spec:
-  selector:
-    app: fastapi-app
-  ports:
-    - port: {{ .Values.service.port }}
-      targetPort: 80
-  type: LoadBalancer

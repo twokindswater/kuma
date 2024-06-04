@@ -1,0 +1,7 @@
+namespace: kuma-demo
+
+gateway:
+  name: kuma-gw
+
+httpRoute:
+  name: kuma-http-route

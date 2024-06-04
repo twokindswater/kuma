@@ -1,0 +1,23 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: echo
+  namespace: kuma-demo
+  labels:
+    kuma.io/mesh: default # indicate to Kuma what is the Mesh that the resource belongs to
+spec:
+  parentRefs:
+    - group: gateway.networking.k8s.io
+      kind: Gateway
+      name: kuma
+      namespace: kuma-demo
+  rules:
+    - backendRefs:
+        - kind: Service
+          name: fastapi-service-2
+          port: 80
+          weight: 1
+      matches:
+        - path:
+            type: PathPrefix
+            value: /

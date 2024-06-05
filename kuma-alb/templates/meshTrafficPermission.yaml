@@ -1,0 +1,16 @@
+apiVersion: kuma.io/v1alpha1
+kind: MeshTrafficPermission
+metadata:
+  namespace: kuma-system
+  name: {{ .Values.namespace }}
+spec:
+  targetRef:
+    kind: MeshService
+    name: fastapi-service
+  from:
+    - targetRef:
+        kind: MeshSubset
+        tags:
+          kuma.io/service: fastapi-service
+      default:
+        action: Allow

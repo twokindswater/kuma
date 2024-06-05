@@ -1,0 +1,10 @@
+apiVersion: kuma.io/v1alpha1
+kind: MeshGatewayInstance
+metadata:
+  name: fastapi-gateway-instance
+  namespace: kuma-alb
+spec:
+  tags:
+    kuma.io/service: fastapi-gateway  # MeshGateway의 이름과 일치
+  replicas: 1
+  serviceType: LoadBalancer

@@ -1,0 +1,14 @@
+apiVersion: kuma.io/v1alpha1
+kind: MeshGateway
+metadata:
+  name: fastapi-gateway
+  namespace: kuma-alb
+mesh: default
+spec:
+  selectors:
+    - match:
+        kuma.io/service: fastapi-service_kuma-alb_svc_80
+  conf:
+    listeners:
+      - port: 80
+        protocol: HTTP

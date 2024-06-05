@@ -1,0 +1,7 @@
+namespace: kuma-alb
+
+gateway:
+  name: kuma-gw
+
+httpRoute:
+  name: kuma-http-route

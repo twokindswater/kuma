@@ -1,0 +1,17 @@
+apiVersion: kuma.io/v1alpha1
+kind: MeshTrafficPermission
+metadata:
+  namespace: kuma-system
+  name: mesh-traffic-permission-kong
+spec:
+  targetRef:
+    kind: MeshService
+    name: demo-app_kuma-demo_svc_5000
+  from:
+    - targetRef:
+        kind: MeshSubset
+        tags:
+          app.kubernetes.io/name: gateway
+          k8s.kuma.io/namespace: kong
+      default:
+        action: Allow

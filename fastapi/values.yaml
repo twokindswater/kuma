@@ -1,4 +1,4 @@
-namespace: kong
+namespace: kuma-alb
 
 image:
   repository: "asia-northeast3-docker.pkg.dev/jieum-dev/jongsoo/fastapi"

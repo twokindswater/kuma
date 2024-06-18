@@ -1,0 +1,32 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: GatewayClass
+metadata:
+  name: kong
+  annotations:
+    konghq.com/gatewayclass-unmanaged: 'true'
+spec:
+  controllerName: konghq.com/kic-gateway-controller
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: Gateway
+metadata:
+  name: kong
+spec:
+  gatewayClassName: kong
+  listeners:
+    - name: proxy
+      port: 80
+      protocol: HTTP
+      allowedRoutes:
+        namespaces:
+          from: All
+    - name: https
+      port: 443
+      protocol: HTTPS
+      tls:
+        certificateRefs:
+          - name: kong-cluster-cert
+            namespace: kong
+      allowedRoutes:
+        namespaces:
+          from: All
